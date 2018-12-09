@@ -9,4 +9,7 @@
 class StatusCode
 {
     const SUCCESS = 0;
+    const ARRAY_CAPACITY_FULL = 100;
+    const ARRAY_INDEX_OUT_OF_BOUND = 101;
+    const ARRAY_EMPTY_INDEX_OF_VALUE = 102;
 }
