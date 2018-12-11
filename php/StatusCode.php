@@ -20,7 +20,7 @@ class StatusCode
     const LINKED_LIST_EMPTY = 201;
     const LINKED_LIST_OUT_OF_BOUND = 202;
     const LINKED_LIST_NODE_NOT_EXIST = 203;
-    const LINKED_LIST_CAN_NOT_REVERSE = 204;
+    const LINKED_LIST_LESS_THAN_TWO_NODES = 204;
 
 
 

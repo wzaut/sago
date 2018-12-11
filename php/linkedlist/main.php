@@ -27,6 +27,8 @@ $linked_list->insertNode($node1, $node2);
 $linked_list->insertNode($node2, $node3);
 $linked_list->insertNode($node3, $node4);
 $linked_list->insertNode($node4, $node5);
+$node5->next = $node1;
+
 //$linked_list->insertNodePre($node5, $node7);
 
 //$linked_list->insertHead(1);
@@ -44,15 +46,15 @@ $linked_list->insertNode($node4, $node5);
 ////$linked_list->deleteHead();
 
 
-$linked_list->printList();
+$linked_list->printCircle();
 
 //$linked_list->deleteNode($node5);
 //
 //$linked_list->deleteNode($node1);
 
-$linked_list->reverse();
-
-$linked_list->printList();
+//$linked_list->reverse();
+//
+//$linked_list->printList();
 
 //$find = $linked_list->findNode(3);
 //

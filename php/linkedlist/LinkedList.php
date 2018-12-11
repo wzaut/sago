@@ -178,7 +178,7 @@ class LinkedList
     public function reverse()
     {
         if ($this->length <= 1) {
-            return StatusCode::LINKED_LIST_CAN_NOT_REVERSE;
+            return StatusCode::LINKED_LIST_LESS_THAN_TWO_NODES;
         }
         $new_head_node = null;
         for ($j = $this->length; $j > 0; --$j) {
@@ -200,6 +200,9 @@ class LinkedList
 
     }
 
+    /*
+     * 打印单链表
+     */
     public function printList()
     {
         $cur_node = $this->head;
@@ -209,6 +212,27 @@ class LinkedList
             $cur_node = $cur_node->next;
         }
         echo "null" . "\r\n";
+    }
+
+    /*
+     * 打印环形链表
+     */
+    public function printCircle()
+    {
+        if ($this->length < 2) {
+            return StatusCode::LINKED_LIST_LESS_THAN_TWO_NODES;
+        }
+
+        $i = 0;
+        $cur_node = $this->head;
+        echo "head";
+        while ($i <= $this->length) {
+            $cur_node = $cur_node->next;
+            echo " -> " . $cur_node->data;
+            $i++;
+        }
+        echo PHP_EOL;
+
     }
 
 }
