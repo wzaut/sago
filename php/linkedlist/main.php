@@ -27,7 +27,7 @@ $linked_list->insertNode($node1, $node2);
 $linked_list->insertNode($node2, $node3);
 $linked_list->insertNode($node3, $node4);
 $linked_list->insertNode($node4, $node5);
-$linked_list->insertNodePre($node5, $node7);
+//$linked_list->insertNodePre($node5, $node7);
 
 //$linked_list->insertHead(1);
 //$linked_list->insertHead(2);
@@ -46,9 +46,11 @@ $linked_list->insertNodePre($node5, $node7);
 
 $linked_list->printList();
 
-$linked_list->deleteNode($node5);
+//$linked_list->deleteNode($node5);
+//
+//$linked_list->deleteNode($node1);
 
-$linked_list->deleteNode($node1);
+$linked_list->reverse();
 
 $linked_list->printList();
 
@@ -56,6 +58,9 @@ $linked_list->printList();
 //
 //echo "Node found: " . $find . "\r\n";
 //
-//$length = $linked_list->getLength();
-//
-//echo "linked list length is " . $length . "\r\n";
+//$pre_node = $linked_list->getPreNode($node5);
+
+//echo "pre node :" . $pre_node->data . "\r\n";
+$length = $linked_list->getLength();
+
+echo "linked list length is " . $length . "\r\n";

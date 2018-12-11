@@ -175,6 +175,31 @@ class LinkedList
         return null;
     }
 
+    public function reverse()
+    {
+        if ($this->length <= 1) {
+            return StatusCode::LINKED_LIST_CAN_NOT_REVERSE;
+        }
+        $new_head_node = null;
+        for ($j = $this->length; $j > 0; --$j) {
+            $tail_node = $this->head;
+
+            for ($i = 0; $i < $j; ++$i) {
+                $tail_node = $tail_node->next;
+            }
+
+            if ($j == $this->length) {
+                $new_head_node = $tail_node;
+            }
+            $pre_node = $this->getPreNode($tail_node);
+            $tail_node->next = empty($pre_node->data) ? null : $pre_node;
+        }
+
+        $this->head->next = $new_head_node;
+
+
+    }
+
     public function printList()
     {
         $cur_node = $this->head;
