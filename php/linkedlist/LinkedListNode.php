@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: vega-001
- * Date: 18/12/10
- * Time: 上午11:01
- */
+namespace Sago\Php;
+
+
 class LinkedListNode
 {
     public $data;

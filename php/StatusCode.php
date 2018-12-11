@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: weizhexu
- * Date: 2018/12/8
- * Time: 下午9:30
- */
+namespace Sago\Php;
+
+
 class StatusCode
 {
     //common

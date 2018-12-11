@@ -1,19 +1,12 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: vega-001
- * Date: 18/12/10
- * Time: 上午11:01
- */
-require_once "./LinkedListNode.php";
-require "../StatusCode.php";
+namespace Sago\Php;
 
 
 class LinkedList
 {
 
-    private $length;
+    public $length;
 
     /*
      * 哨兵节点 data=null, next指向第一个node
@@ -173,31 +166,6 @@ class LinkedList
         }
 
         return null;
-    }
-
-    public function reverse()
-    {
-        if ($this->length <= 1) {
-            return StatusCode::LINKED_LIST_LESS_THAN_TWO_NODES;
-        }
-        $new_head_node = null;
-        for ($j = $this->length; $j > 0; --$j) {
-            $tail_node = $this->head;
-
-            for ($i = 0; $i < $j; ++$i) {
-                $tail_node = $tail_node->next;
-            }
-
-            if ($j == $this->length) {
-                $new_head_node = $tail_node;
-            }
-            $pre_node = $this->getPreNode($tail_node);
-            $tail_node->next = empty($pre_node->data) ? null : $pre_node;
-        }
-
-        $this->head->next = $new_head_node;
-
-
     }
 
     /*

@@ -5,7 +5,8 @@
  * Date: 18/12/7
  * Time: 下午4:01
  */
-require "./BM.php";
+use Sago\Php\BM;
+require_once "BM.php";
 
 //$main=[a,b,a,c,b,b,a,b,c,d], $pattern=[a,b,c];
 $bm = new BM();

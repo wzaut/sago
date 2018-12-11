@@ -6,6 +6,10 @@
  * Date: 18/12/7
  * Time: 下午2:15
  */
+
+namespace Sago\Php;
+
+
 class BM
 {
     //$main=[a,b,a,c,b,b,a,b,c,d], $pattern=[a,b,c];

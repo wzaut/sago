@@ -5,7 +5,8 @@
  * Date: 2018/12/8
  * Time: 下午9:47
  */
-require "./Arrays.php";
+use Sago\Php\Arrays;
+require_once "Arrays.php";
 
 $array = new Arrays(5);
 

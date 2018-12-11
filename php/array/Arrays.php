@@ -6,7 +6,8 @@
  * Date: 2018/12/8
  * Time: 下午7:20
  */
-require "../StatusCode.php";
+
+namespace Sago\Php;
 
 
 class Arrays

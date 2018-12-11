@@ -1,13 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vega-001
- * Date: 18/12/10
- * Time: 下午2:51
- */
 
-require "./LinkedList.php";
-require_once "./LinkedListNode.php";
+namespace Sago\Php;
+
+require_once "LinkedList.php";
+require_once "LinkedListNode.php";
 
 $linked_list = new LinkedList();
 
