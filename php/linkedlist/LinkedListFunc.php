@@ -112,5 +112,34 @@ class LinkedListFunc
 
     }
 
+    /*
+     * 检查链表是否有环
+     */
+    public function checkCircle()
+    {
+        $list = $this->list;
+        $length = $list->getLength();
+        if ($length < 2) {
+            return StatusCode::LINKED_LIST_LESS_THAN_TWO_NODES;
+        }
+        //定义两个快慢指针
+        $fast = $list->head->next;
+        $slow = $list->head->next;
+
+        while ($fast != null && $slow != null) {
+            //isset防止无环时NOTICE异常
+            $fast = isset($fast->next->next) ? $fast->next->next : null;
+            $slow = $slow->next;
+
+            //慢指针和快指针相遇说明有环 证明文档@link http://t.cn/ROxpgQ1
+            if ($fast === $slow) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
 
 }

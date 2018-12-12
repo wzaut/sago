@@ -173,6 +173,11 @@ class LinkedList
      */
     public function printList()
     {
+        $func = new LinkedListFunc($this);
+        if ($func->checkCircle()) {
+            $this->printCircle();
+            return;
+        }
         $cur_node = $this->head;
         echo "head -> ";
         while ($cur_node->next != null) {

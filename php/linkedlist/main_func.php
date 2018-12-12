@@ -28,6 +28,7 @@ $list->insertNode($node3, $node4);
 $list->insertNode($node4, $node5);
 $list->insertNode($node5, $node6);
 $list->insertNode($node6, $node7);
+//$node7->next = $node2;
 
 $list->printList();
 
@@ -49,6 +50,12 @@ $result = $list_func->reverse();
 var_dump($result);
 $list->printList();
 
+/*
+ * 是否带环
+ */
+echo PHP_EOL . ">>>>>>>>>>>>>>>>>>>>>>>>>>>是否带环>>>>>>>>>>>>>>>>>>>>>>>>>>>" . PHP_EOL;
+$result = $list_func->checkCircle();
+var_dump($result);
 
 
 
