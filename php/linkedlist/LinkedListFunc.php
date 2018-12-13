@@ -13,7 +13,7 @@ namespace Sago\Php;
  *
  * mergeSortedList 两个链表的有序合并
  *
- * deleteLastNth 删除链表倒数第n个节点
+ * deleteLastNth 删除链表倒数第N个节点
  *
  * findMidNode 求链表中间节点
  *
@@ -178,6 +178,47 @@ class LinkedListFunc
         $sort_list->length = $list1->length + $list2->length;
 
         return $sort_list;
+
+    }
+
+    /*
+     * 删除倒数第N个节点
+     *
+     */
+    public function deleteLastNth($N)
+    {
+        $list = $this->list;
+        $len = $list->length;
+        $cur_node = $list->head;
+        for ($i = 0; $i < $len - $N; ++$i) {
+            $cur_node = $cur_node->next;
+        }
+        $cur_node->next = $cur_node->next->next;
+        $list->length--;
+    }
+
+    /*
+     * 快慢指针查找中间节点
+     *
+     * 快指针的速度是慢指针的2倍,当快指针跑到终点时,慢指针跑到路程的一半
+     */
+    public function findMidNode()
+    {
+        $list = $this->list;
+        $len = $list->length;
+        if ($len < 2) {
+            return StatusCode::LINKED_LIST_LESS_THAN_TWO_NODES;
+        }
+
+        $fast = $list->head->next;
+        $slow = $list->head->next;
+
+        while ($fast != null && $fast->next != null) {
+            $fast = $fast->next->next;
+            $slow = $slow->next;
+        }
+
+        return $slow->data;
 
     }
 

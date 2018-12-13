@@ -80,6 +80,18 @@ $result = $func->checkCircle();
 var_dump($result);
 echo "length = " . $sort_list->length;
 
+/*
+ * 删除倒数第N个节点
+ */
+echo PHP_EOL . ">>>>>>>>>>>>>>>>>>>>>>>>>>>删除倒数第N个节点>>>>>>>>>>>>>>>>>>>>>>>>>>>" . PHP_EOL;
+$func->deleteLastNth(2);
+$sort_list->printList();
+echo "length = " . $sort_list->length;
 
-
+/*
+ * 寻找中间节点
+ */
+echo PHP_EOL . ">>>>>>>>>>>>>>>>>>>>>>>>>>>寻找中间节点>>>>>>>>>>>>>>>>>>>>>>>>>>>" . PHP_EOL;
+$mid_node = $func->findMidNode();
+echo "mid node = " . $mid_node;
 
