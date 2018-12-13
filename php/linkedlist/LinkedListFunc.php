@@ -11,7 +11,7 @@ namespace Sago\Php;
  *
  * checkCircle 检测链表中是否有环
  *
- * mergeSortedList 两个有序列表的合并
+ * mergeSortedList 两个链表的有序合并
  *
  * deleteLastNth 删除链表倒数第n个节点
  *
@@ -141,5 +141,44 @@ class LinkedListFunc
 
     }
 
+    /*
+     * 两个链表的有序合并
+     *
+     */
+    public function mergeSortedList(LinkedList $list1, LinkedList $list2)
+    {
+        if ($list1 == null || $list2 == null) {
+            return StatusCode::PARAM_ERROR;
+        }
+
+        $sort_list = new LinkedList();
+        $sort_node = $sort_list->head;
+        $node1 = $list1->head->next;
+        $node2 = $list2->head->next;
+
+        //从小到大排列,如果相等把node1放在前面
+        while ($node1 != null && $node2 != null) {
+            if ($node1->data <= $node2->data) {
+                $sort_node->next = $node1;
+                $node1 = $node1->next;
+            } else {
+                $sort_node->next = $node2;
+                $node2 = $node2->next;
+            }
+
+            $sort_node = $sort_node->next;
+
+        }
+        if ($node1 != null) {
+            $sort_node->next = $node1;
+        }
+        if ($node2 != null) {
+            $sort_node->next = $node2;
+        }
+        $sort_list->length = $list1->length + $list2->length;
+
+        return $sort_list;
+
+    }
 
 }

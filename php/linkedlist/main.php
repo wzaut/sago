@@ -4,6 +4,7 @@ namespace Sago\Php;
 
 require_once "LinkedList.php";
 require_once "LinkedListNode.php";
+require_once "../StatusCode.php";
 
 $linked_list = new LinkedList();
 

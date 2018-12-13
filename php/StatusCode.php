@@ -7,6 +7,7 @@ class StatusCode
 {
     //common
     const SUCCESS = 0;
+    const PARAM_ERROR = 99;
 
     //status code for array
     const ARRAY_CAPACITY_FULL = 100;
