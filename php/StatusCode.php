@@ -20,6 +20,9 @@ class StatusCode
     const LINKED_LIST_NODE_NOT_EXIST = 203;
     const LINKED_LIST_LESS_THAN_TWO_NODES = 204;
 
+    //stack
+    const STACK_FULL_CAPACITY = 301;
+    const STACK_EMPTY = 302;
 
 
 }
