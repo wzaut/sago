@@ -24,5 +24,7 @@ class StatusCode
     const STACK_FULL_CAPACITY = 301;
     const STACK_EMPTY = 302;
 
-
+    //queue
+    const QUEUE_FULL_CAPACITY = 401;
+    const QUEUE_EMPTY = 402;
 }
