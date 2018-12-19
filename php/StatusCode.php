@@ -13,6 +13,7 @@ class StatusCode
     const ARRAY_CAPACITY_FULL = 100;
     const ARRAY_INDEX_OUT_OF_BOUND = 101;
     const ARRAY_EMPTY_INDEX_OF_VALUE = 102;
+    const ARRAY_COUNT_LESS_THAN_TWO = 103;
 
     //linked list
     const LINKED_LIST_EMPTY = 201;
@@ -27,4 +28,7 @@ class StatusCode
     //queue
     const QUEUE_FULL_CAPACITY = 401;
     const QUEUE_EMPTY = 402;
+
+    //sort
+
 }
