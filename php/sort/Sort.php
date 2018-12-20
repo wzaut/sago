@@ -18,6 +18,7 @@ class Sort
 
     /*
      * 冒泡排序
+     * O(n^2)
      */
     public function bubble_sort()
     {
@@ -48,6 +49,7 @@ class Sort
 
     /*
      * 插入排序
+     * O(n^2)
      */
     public function insertion_sort()
     {
@@ -76,6 +78,7 @@ class Sort
 
     /*
      * 选择排序
+     * O(n^2)
      */
 
     public function selection_sort()
@@ -103,6 +106,88 @@ class Sort
         }
 
         return $arr;
+    }
+
+    /*
+     * 归并排序
+     * O(nlogn)
+     */
+    public function merge_sort()
+    {
+        if (count($this->arr) < 2) {
+            return StatusCode::ARRAY_COUNT_LESS_THAN_TWO;
+        }
+
+        $this->merge_sort_c($this->arr, 0, count($this->arr) - 1);
+
+        return $this->arr;
+
+    }
+
+    private function merge_sort_c(&$arr, $start, $end)
+    {
+        //递归终止条件
+        if ($start >= $end) {
+            return;
+        }
+        $mid = ($start + $end) / 2;
+        $mid = intval($mid);
+
+        $B = array_slice($arr, 0, $mid + 1);
+        $C = array_slice($arr, $mid + 1);
+
+        //分治递归
+        $this->merge_sort_c($B, 0, count($B) - 1);
+        $this->merge_sort_c($C, 0, count($C) - 1);
+        //合并
+        $this->merge($arr, $B, $C);
+
+    }
+
+    /**
+     * @param array $A
+     * @param array $B
+     * @param array $C
+     *
+     * 合并两个有序数组
+     */
+    private function merge(&$A, $B, $C)
+    {
+        $arrTmp = array();
+
+        $b = count($B) - 1;
+        $c = count($C) - 1;
+        $i = 0;
+        $j = 0;
+        $k = 0;
+
+        while ($i <= $b && $j <= $c) {
+            if ($B[$i] > $C[$j]) {
+                $arrTmp[$k] = $C[$j];
+                $j++;
+            } else {
+                $arrTmp[$k] = $B[$i];
+                $i++;
+            }
+            $k++;
+        }
+
+        if ($i > $b) {
+            while ($j <= $c) {
+                $arrTmp[$k] = $C[$j];
+                $k++;
+                $j++;
+            }
+
+        } else {
+            while ($i <= $b) {
+                $arrTmp[$k] = $B[$i];
+                $k++;
+                $i++;
+            }
+        }
+        $A = $arrTmp;
+
     }
 
 }
