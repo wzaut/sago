@@ -18,7 +18,12 @@ echo ">>>>>>>>>>>>>>>>>Bubble Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
 $sort = new Sort($data);
 echo print_r($sort->bubble_sort(), true);
 
-echo ">>>>>>>>>>>>>>>>>Insert Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
+echo ">>>>>>>>>>>>>>>>>Insertion Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
 
 $sort = new Sort($data);
 echo print_r($sort->insertion_sort(), true);
+
+echo ">>>>>>>>>>>>>>>>>Selection Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
+
+$sort = new Sort($data);
+echo print_r($sort->selection_sort(), true);

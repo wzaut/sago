@@ -3,10 +3,9 @@
 
 namespace Sago\Php;
 /**
- * Created by PhpStorm.
- * User: vega-001
- * Date: 18/12/19
- * Time: 上午10:56
+ * User: weizhe
+ * 时间复杂度为O(n^2)的三个排序算法
+ * 分别为: 冒泡,插入,选择
  */
 class Sort
 {
@@ -70,28 +69,40 @@ class Sort
             }
             $arr[$j + 1] = $value;
         }
-        /*
-        for ($i = 0; $i < $len - 1; ++$i) {
-            $data = $arr[$i + 1];
-            $flag = false;
-            for ($j = $i; $j >= 0; --$j) {
-                if ($data >= $arr[$j]) {
-                    array_splice($arr, $i + 1, 1);
-                    array_splice($arr, $j + 1, 0, $data);
-                    $flag = true;
-                    break;
-                }
-            }
-            if (!$flag) {
-                array_splice($arr, $i + 1, 1);
-                array_splice($arr, 0, 0, $data);
-            }
-
-        }
-        */
 
         return $arr;
 
+    }
+
+    /*
+     * 选择排序
+     */
+
+    public function selection_sort()
+    {
+        if (count($this->arr) < 2) {
+            return StatusCode::ARRAY_COUNT_LESS_THAN_TWO;
+        }
+
+        $arr = array_values($this->arr);
+        $len = count($arr);
+
+        for ($i = 0; $i < $len; ++$i) {
+            $slice = array_slice($arr, $i);
+            $min_value = min($slice);
+
+            for ($j = $i; $j < $len; ++$j) {
+                if ($arr[$j] == $min_value) {
+                    unset($arr[$j]);
+                    break;
+                }
+            }
+
+            array_splice($arr, $i, 0, $min_value);
+
+        }
+
+        return $arr;
     }
 
 }
