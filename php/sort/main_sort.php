@@ -32,3 +32,8 @@ echo ">>>>>>>>>>>>>>>>>Merge Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
 
 $sort = new Sort($data);
 echo print_r($sort->merge_sort(), true);
+
+echo ">>>>>>>>>>>>>>>>>Quick Sort>>>>>>>>>>>>>>>>>" . PHP_EOL;
+
+$sort = new Sort($data);
+echo print_r($sort->quick_sort(), true);

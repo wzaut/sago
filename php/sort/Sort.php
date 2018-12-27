@@ -190,4 +190,101 @@ class Sort
 
     }
 
+    /*
+     * 快速排序
+     * O(nlogn)
+     */
+    public function quick_sort()
+    {
+        $len = count($this->arr);
+        if ($len < 2) {
+            return StatusCode::ARRAY_COUNT_LESS_THAN_TWO;
+        }
+
+        $arr = array_values($this->arr);
+        $this->quick_sort_c($arr, 0, $len - 1);
+
+        return $arr;
+    }
+
+    private function quick_sort_c(&$arr, $start, $end)
+    {
+        //递归终止条件
+        if ($start >= $end) {
+            return;
+        }
+        //$res = $this->partition($arr, $start, $end);
+        $res = $this->partition_op($arr, $start, $end);
+        $key = $res['pivot_key'];
+        $len_s = $res['len_s'];
+        $len_l = $res['len_l'];
+
+        $this->quick_sort_c($arr, $key - $len_s, $key - 1);
+        $this->quick_sort_c($arr, $key + 1, $key + $len_l);
+    }
+
+    /*
+     * 分区函数
+     */
+    private function partition(&$arr, $start, $end)
+    {
+        $tmp_s = array();
+        $tmp_l = array();
+        $pivot = $arr[$end];
+        for ($i = $start; $i < $end; ++$i) {
+            if ($arr[$i] < $pivot) {
+                $tmp_s[] = $arr[$i];
+            } else {
+                $tmp_l[] = $arr[$i];
+            }
+        }
+        $len_s = count($tmp_s);
+        $len_l = count($tmp_l);
+
+        if ($len_s > 0) {
+            $j = 0;
+            for ($i = $start; $i < $start + $len_s; ++$i) {
+                $arr[$i] = $tmp_s[$j];
+                $j++;
+            }
+        }
+
+        $arr[$start + $len_s] = $pivot;
+
+        if ($len_l > 0) {
+            $j = 0;
+            for ($i = $start + $len_s + 1; $i < $start + $len_s + $len_l + 1; ++$i) {
+                $arr[$i] = $tmp_l[$j];
+                $j++;
+            }
+
+        }
+
+        return ['pivot_key' => $start + $len_s, 'len_s' => $len_s, 'len_l' => $len_l];
+    }
+
+    /*
+     * 不占用额外空间的分区函数
+     */
+    private function partition_op(&$arr, $start, $end)
+    {
+        $i = $j = $start;
+        $pivot = $arr[$end];
+
+        for (; $i < $end; ++$i) {
+            if ($arr[$i] < $pivot) {
+                $tmp = $arr[$i];
+                $arr[$i] = $arr[$j];
+                $arr[$j] = $tmp;
+                $j ++;
+            }
+        }
+
+        $tmp = $arr[$j];
+        $arr[$j] = $arr[$end];
+        $arr[$end] = $tmp;
+
+        return ['pivot_key' => $j, 'len_s' => $j - $start, 'len_l' => $end - $j];
+
+    }
 }
