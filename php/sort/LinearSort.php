@@ -9,6 +9,10 @@
 namespace Sago\Php;
 
 
+/*
+ * 线性排序算法
+ * 复杂度O(n)
+ */
 class LinearSort
 {
     private $arr;
