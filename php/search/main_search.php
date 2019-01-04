@@ -20,3 +20,5 @@ echo PHP_EOL;
 $data = [1, 2, 3, 3, 5, 6, 7, 10];
 $search = new Search($data);
 echo $search->bsearch3(1);
+echo PHP_EOL;
+echo $search->bsearch4(3);

@@ -94,4 +94,33 @@ class Search
         }
     }
 
+    //查找最后一个小于等于给定值的元素
+    public function bsearch4($target)
+    {
+        $arr = $this->arr;
+        $n = count($arr);
+        $low = 0;
+        $high = $n - 1;
+        if ($arr[$low] > $target) {
+            return -1;
+        }
+        if ($arr[$high] <= $target) {
+            return $high;
+        }
+        while ($high >= $low) {
+            $mid = $low + (($high - $low) >> 1);
+            if ($arr[$mid] <= $target) {
+                if ($mid == $n - 1 || $arr[$mid + 1] > $target) {
+                    return $mid;
+                } else {
+                    $low = $mid + 1;
+                }
+            } else {
+                $high = $mid - 1;
+            }
+        }
+
+    }
+
+
 }
