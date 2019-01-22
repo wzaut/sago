@@ -34,11 +34,8 @@ class BM
                 }
 
             }
-            error_log('bad char:');
-            error_log($bad_char);
             //如果没有坏字符则匹配成功直接返回开头位置
             if ($bad_char < 0) {
-                error_log('found successfully!');
                 return $start;
             }
 

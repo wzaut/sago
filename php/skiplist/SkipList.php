@@ -1,41 +1,88 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * User: vega-001
+ * Date: 19/1/9
+ * Time: 上午10:53
+ */
+
 namespace Sago\Php;
 
 class SkipList
 {
-    private $linked_list;
+    private $max_level;
 
-    private $index_lvl;
+    private $level_count;
 
-    private $len;
+    private $head;
 
-    function __construct($linked_list)
+    function __construct($max_level)
     {
-        $this->linked_list = $linked_list;
-        $len = $this->linked_list->length;
-        $this->len = $len;
-        if ($len >= 4) {
-            $this->index_lvl = intval(log($len, 2)) - 1;
-            $this->indexing();
-        } else {
-            $this->index_lvl = 0;
+        $this->max_level = $max_level;
+        $this->level_count = 1;
+        $this->head = new SkipListNode();
+    }
+
+    private function randomLevel()
+    {
+        $level = 1;
+        for ($i = 0; $i < $this->max_level; ++$i) {
+            if (rand(1, 100) % 2 == 1) {
+                $level++;
+            }
+        }
+        return $level;
+    }
+
+    public function insert($value)
+    {
+        $level = $this->randomLevel();
+        $new_node = new SkipListNode();
+        $new_node->data = $value;
+        $new_node->max_level = $level;
+
+        $update = array();
+
+        for ($i = 0; $i < $level; ++$i) {
+            $update[$i] = $this->head;
         }
 
+        //record every level largest value which smaller than insert in update[]
+        $p = $this->head;
+        for ($i = $level - 1; $i >= 0; --$i) {
+            while (isset($p->forwards[$i]) && $p->forwards[$i]->data < $value) {
+                $p = $p->forwards[$i];
+            }
+            $update[$i] = $p; //use update save node in search path
+            $p->forwards[$i] = $new_node;
+        }
+
+        //in search path node next node become new node forwards(next)
+        for ($i = 0; $i < $level; ++$i) {
+            $new_node->forwards[$i] = $update[$i]->forwards[$i];
+        }
+
+        if ($this->level_count < $level) {
+            $this->level_count = $level;
+        }
+
+        return $this->head->forwards;
     }
 
-    public function getIndexLvl()
+    public function find($value)
     {
-        return $this->index_lvl;
-    }
+        $p = $this->head;
 
-    public function getLength()
-    {
-        return $this->len;
-    }
+        for ($i = $this->level_count - 1; $i >= 0; --$i) {
+            while ($p->forwards[$i] != null && $p->forwards[$i]->data < $value) {
+                $p = $p->forwards[$i];
+            }
+        }
 
-    public function indexing()
-    {
-
+        if ($p->forwards[0] != null && $p->forwards[0]->data == $value) {
+            return $p->forwards[0];
+        }
+        return null;
     }
 }
