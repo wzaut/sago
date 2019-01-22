@@ -55,19 +55,40 @@ class SkipList
                 $p = $p->forwards[$i];
             }
             $update[$i] = $p; //use update save node in search path
-            $p->forwards[$i] = $new_node;
+
         }
 
         //in search path node next node become new node forwards(next)
         for ($i = 0; $i < $level; ++$i) {
-            $new_node->forwards[$i] = $update[$i]->forwards[$i];
+            $new_node->forwards[$i] = isset($update[$i]->forwards[$i]) ? $update[$i]->forwards[$i] : null;
+            $update[$i]->forwards[$i] = $new_node;
         }
 
         if ($this->level_count < $level) {
             $this->level_count = $level;
         }
 
-        return $this->head->forwards;
+        return $new_node;
+    }
+
+    public function delete($value)
+    {
+        $update = array();
+        $p = $this->head;
+        for ($i = $this->level_count - 1; $i >= 0; --$i) {
+            while ($p->forwards[$i] != null && $p->forwards[$i]->data < $value) {
+                $p = $p->forwards[$i];
+            }
+            $update[$i] = $p;
+        }
+
+        if ($p->forwards[0] != null && $p->forwards[0]->data == $value) {
+            for ($i = $this->level_count -1; $i >= 0; --$i) {
+                if ($update[$i]->forwards[$i] != null && $update[$i]->forwards[$i]->data == $value) {
+                    $update[$i]->forwards[$i] = $update[$i]->forwards[$i]->forwards[$i];
+                }
+            }
+        }
     }
 
     public function find($value)
@@ -83,6 +104,6 @@ class SkipList
         if ($p->forwards[0] != null && $p->forwards[0]->data == $value) {
             return $p->forwards[0];
         }
-        return null;
+        return "Not found!";
     }
 }

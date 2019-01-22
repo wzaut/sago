@@ -13,9 +13,16 @@ require_once "SkipList.php";
 require_once "SkipListNode.php";
 
 
-$skip_list = new SkipList(16);
-$forwards = $skip_list->insert(6);
-$forwards = $skip_list->insert(2);
+$skip_list = new SkipList(4);
+$skip_list->insert(6);
+$skip_list->insert(2);
+$skip_list->insert(3);
+$skip_list->insert(11);
 
-echo print_r($forwards, true);
 
+$find = $skip_list->find(3);
+echo print_r($find, true);
+
+$skip_list->delete(3);
+$find = $skip_list->find(3);
+echo print_r($find, true);
