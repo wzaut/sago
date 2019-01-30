@@ -1,12 +1,13 @@
 <?php
 
+namespace Sago\taop;
 /**
  * Created by PhpStorm.
  * User: weizhexu
  * Date: 2019/1/29
  * Time: 下午10:59
  */
-class ArrayAl
+class C203
 {
     /*
      * 寻找和为定值的多个数
