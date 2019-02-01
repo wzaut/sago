@@ -1,6 +1,6 @@
 <?php
 
-namespace Sago\taop;
+namespace Sago\Taop;
 
 require_once "C203.php";
 require_once "C204.php";

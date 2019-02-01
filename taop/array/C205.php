@@ -6,7 +6,7 @@
  * Time: 下午2:07
  */
 
-namespace Sago\taop;
+namespace Sago\Taop;
 
 
 class C205

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sago\taop;
+namespace Sago\Taop;
 /**
  * Created by PhpStorm.
  * User: vega-001
