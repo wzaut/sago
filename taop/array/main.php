@@ -2,10 +2,18 @@
 
 namespace Sago\Taop;
 
+require_once "C201.php";
 require_once "C203.php";
 require_once "C204.php";
 require_once "C205.php";
 
+echo "**2.1寻找第k小元素" . PHP_EOL;
+$c201 = new C201();
+$arr = [3, 5, 2, 1, 4, 9, 8, 6];
+$k = $c201->minKthValue($arr, 5);
+echo print_r($arr, true);
+echo $k . PHP_EOL;
+/*
 echo "**2.3寻找和为定值的多个数" . PHP_EOL;
 $array_al = new C203();
 $array_al->sumOfkNumber([9, 5, 3, 2, 4, 1, 1, 2], 8, 6);
@@ -39,4 +47,5 @@ echo $res . PHP_EOL;
 echo "**2.5换硬币问题" . PHP_EOL;
 $res = $jump_step->changeCoin(6);
 echo print_r($res, true);
+
 
