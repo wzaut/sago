@@ -7,6 +7,7 @@ require_once "C202.php";
 require_once "C203.php";
 require_once "C204.php";
 require_once "C205.php";
+require_once "C206.php";
 
 echo "**2.1寻找第k小元素" . PHP_EOL;
 $c201 = new C201();
@@ -60,4 +61,10 @@ echo $res . PHP_EOL;
 echo "**2.5换硬币问题" . PHP_EOL;
 $res = $jump_step->changeCoin(6);
 echo print_r($res, true);
+
+echo "-----2.6 奇偶数排序问题-----" . PHP_EOL;
+$arr = [2, 1, 3, 8, 9, 6, 2, 3, 10];
+$c206 = new C206();
+$c206->oddEvenOrder($arr);
+echo print_r($arr, true);
 
