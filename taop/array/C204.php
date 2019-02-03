@@ -21,7 +21,7 @@ class C204
      * 通过暴力枚举法
      * 复杂度:O(n^3)不符合要求
      */
-    function maxConSubArr($array)
+    function findMaxSubArr($array)
     {
         $len = count($array);
 
@@ -55,8 +55,8 @@ class C204
      *
      * 负责度O(n)
      */
-
-    function maxConSubArr2($array)
+    //假设数组1, -2, 3, 10, -4, 7, 2, -5
+    function findMaxSubArr2($array)
     {
         $current_sum = 0;
         $max_sum = $array[0];
@@ -67,6 +67,32 @@ class C204
         }
 
         return $max_sum;
+    }
+
+    //如果同时要求输出子段的开始和结束列?
+    function findMaxSubArr3($arr)
+    {
+        $current_sum = [-1 => 0, 0 => $arr[0]];
+        $length = [];
+
+        for ($i = 0; $i < count($arr); ++$i) {
+            if ($current_sum[$i - 1] + $arr[$i] > $arr[$i]) {
+                $current_sum[$i] = $current_sum[$i - 1] + $arr[$i];
+                $length[$i] = $length[$i - 1] + 1;
+            } else {
+                $current_sum[$i] = $arr[$i];
+                $length[$i] = 1;
+            }
+        }
+        $start = $end = -1;
+        $max_value = max($current_sum);
+        foreach ($current_sum as $index => $sum) {
+            if ($sum == $max_value) {
+                $start = $index - $length[$index] + 1;
+                $end = $index;
+            }
+        }
+        return $start . ' -> ' . $end;
     }
 
 }

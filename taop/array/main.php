@@ -31,10 +31,13 @@ $array_al->findMultiSumK([9, 5, 3, 2, 4, 1, 1, 2], 7, 6);
 echo "**2.4最大连续子数组和" . PHP_EOL;
 $c0204 = new C204();
 $array = [1, -2, 3, 10, -4, 7, 2, -5];
-$res = $c0204->maxConSubArr($array);
+$res = $c0204->findMaxSubArr($array);
 echo $res . PHP_EOL;
 
-$res = $c0204->maxConSubArr2($array);
+$res = $c0204->findMaxSubArr2($array);
+echo $res . PHP_EOL;
+
+$res = $c0204->findMaxSubArr3($array);
 echo $res . PHP_EOL;
 
 echo "**2.5跳台阶" . PHP_EOL;

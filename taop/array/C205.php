@@ -83,6 +83,7 @@ class C205
     private $res = [];
 
     /*
+     * 数组的全排列问题
      * 参数: $k 表示要处理子数组的数据个数
      */
     function fullPermutations($arr, $k)
