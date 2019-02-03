@@ -22,26 +22,28 @@ class C203
     private $res = [];
 
 
-    function sumOfkNumber($array, $n, $sum)
+    function findMultiSumK($array, $n, $sum)
     {
         //递归出口
-        if ($sum <= 0 || $n <= 0) {
+        if ($sum <= 0 || $n < 0) {
             return;
         }
 
-        if ($sum == $array[$n - 1]) {
+        if ($sum == $array[$n]) {
             for ($i = $this->k - 1; $i >= 0; --$i) {
                 echo $this->res[$i] . " + ";
             }
-            echo $array[$n - 1] . PHP_EOL;
+            echo $array[$n] . PHP_EOL;
 
         }
 
         //考虑是否取第n个数
-        $this->res[$this->k++] = $array[$n - 1];
-        $this->sumOfkNumber($array, $n - 1, $sum - $array[$n - 1]); //取第n个
+        //取的话,将array[n]添加到res数组
+        $this->res[$this->k++] = $array[$n];
+        $this->findMultiSumK($array, $n - 1, $sum - $array[$n]);
+        //如果不取的话,将res中的array[n]删掉
         $this->k--;
-        $this->sumOfkNumber($array, $n - 1, $sum); //不取第n个
+        $this->findMultiSumK($array, $n - 1, $sum);
 
     }
 }
