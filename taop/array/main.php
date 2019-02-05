@@ -8,6 +8,8 @@ require_once "C203.php";
 require_once "C204.php";
 require_once "C205.php";
 require_once "C206.php";
+require_once "C207.php";
+require_once "C209.php";
 
 echo "**2.1寻找第k小元素" . PHP_EOL;
 $c201 = new C201();
@@ -68,3 +70,13 @@ $c206 = new C206();
 $c206->oddEvenOrder($arr);
 echo print_r($arr, true);
 
+echo "------ 2.7 荷兰国旗问题 ------" . PHP_EOL;
+$arr = [2, 0, 1, 1, 0, 0, 2, 1, 0];
+$c207 = new C207();
+$c207->sortRGB($arr);
+echo print_r($arr, true) . PHP_EOL;
+
+echo "----- 2.9 完美洗牌问题 ------" . PHP_EOL;
+$arr = [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8];
+$c209 = new C209();
+$c209->cycleLeader($arr, 1, 4);
