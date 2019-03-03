@@ -46,7 +46,7 @@ echo print_r($res, true) . PHP_EOL;
 
 echo "-------------字符串全排列-------------" . PHP_EOL;
 $c106 = new C106();
-$str = ['a', 'b', 'c'];
-$c106->permutation($str, 0, 2);
+$str = "abcd";
+$c106->permutation($str, 0, 3);
 $res = $c106->getRes();
 echo print_r($res, true) . PHP_EOL;

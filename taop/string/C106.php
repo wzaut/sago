@@ -41,9 +41,6 @@ class C106
     //交换数组元素
     private function swap(&$str, $a, $b)
     {
-        if ($a < 0 || $a > count($str) - 1 || $b < 0 || $b > count($str) - 1) {
-            return;
-        }
         $tmp = $str[$a];
         $str[$a] = $str[$b];
         $str[$b] = $tmp;
