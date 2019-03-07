@@ -5,7 +5,7 @@ require_once "Node.php";
 
 class LRU
 {
-    public $capcity;
+    public $capacity;
 
     public $head;
 
@@ -15,7 +15,7 @@ class LRU
 
     function __construct($cap)
     {
-        $this->capcity = $cap;
+        $this->capacity = $cap;
         $this->head = new Node(null, null);
         $this->tail = new Node(null, null);
         $this->pool = array();
@@ -46,7 +46,7 @@ class LRU
             return;
         }
         //不存在key,需添加
-        if (count($this->pool) == $this->capcity) {//需要淘汰
+        if (count($this->pool) == $this->capacity) {//需要淘汰
             $del_n = $this->tail->pre;
             $this->tail->pre = $del_n->pre;
             $del_n->pre->next = $this->tail;
