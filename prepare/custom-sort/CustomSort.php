@@ -26,13 +26,12 @@ class CustomSort
         }
         $filter_sort = '';
         for ($i = 0; $i < strlen($pattern); ++$i) {
-            for ($j = 0; $j < $count[$pattern[$i]]; ++$j) {
-                $filter_sort .= $pattern[$i];
+            if (isset($count[$pattern[$i]])){
+                for ($j = 0; $j < $count[$pattern[$i]]; ++$j) {
+                    $filter_sort .= $pattern[$i];
+                }
             }
         }
-
-        error_log($filter);
-        error_log($filter_sort);
         if ($filter_sort === $filter) {
             return 1;
         }
