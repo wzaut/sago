@@ -27,7 +27,6 @@ class C207
         $left = 0;
         $right = count($arr) - 1;
         while ($right > $current) {
-            error_log('left' . $left . 'current' . $current . 'right' . $right);
             if ($arr[$current] == 0) {
                 $this->swap($arr, $left, $current);
                 $left++;
@@ -38,7 +37,6 @@ class C207
                 $this->swap($arr, $current, $right);
                 $right--;
             }
-            error_log(print_r($arr, true));
         }
 
     }

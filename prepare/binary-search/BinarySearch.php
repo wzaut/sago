@@ -11,7 +11,6 @@ class BinarySearch
         if ($left > $right)
             return;
         $mid = $left + (($right - $left) >> 1);
-        error_log("left:" . $left . " right:" . $right . " mid:" . $mid);
         if ($nums[$mid] == $target) {
             $this->final_index = $mid;
             return;

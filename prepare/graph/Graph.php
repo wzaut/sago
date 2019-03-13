@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: weizhexu
- * Date: 2019/3/12
- * Time: 下午11:52
- */
+require_once "../Util/Queue.php";
+
 class Graph
 {
     //用拓扑排序判断有向图中是否有环
@@ -19,30 +15,42 @@ class Graph
 
     function topoSort()
     {
+        $res = [];
         $graph = $this->graph;
         $inDegree = [];//入度
         for ($i = 0; $i < count($graph); ++$i) {
-            for ($j = 0; $j < count($graph[]); ++$j) {
+            $inDegree[$i] = 0;
+        }
+        for ($i = 0; $i < count($graph); ++$i) {
+            for ($j = 0; $j < count($graph); ++$j) {
                 if ($graph[$i][$j] == 1)
-                    $inDegree[$j] = isset($inDegree[$j]) ? $inDegree[$j]++ : 1;
+                    $inDegree[$j]++;
             }
         }
-
         $queue = new Queue();
         for ($i = 0; $i < count($graph); ++$i) {
-            if (!isset($inDegree[$i]))
+            if ($inDegree[$i] == 0){
                 $queue->enQueue($i);
+                unset($inDegree[$i]);
+            }
         }
-        while ($queue->count != 0) {
+        while ($queue->count > 0) {
             $i = $queue->deQueue();
-            echo $i . "->";
+            $res[] = $i;
             for ($j = 0; $j < count($graph); ++$j) {
                 if ($graph[$i][$j] == 1) {
                     $inDegree[$j]--;
                 }
             }
+            foreach($inDegree as $key => $value) {
+                if ($value == 0){
+                    $queue->enQueue($key);
+                    unset($inDegree[$key]);
+                }
+            }
         }
 
+        return $res;
     }
 
 }

@@ -25,12 +25,9 @@ class C209
         $mod = 2 * $n + 1;
         for ($i = $from * 2 % $mod; $i != $from; $i = $i * 2 % $mod)
         {
-            //error_log("i: " . $i);
             $tmp = $arr[$i];
             $arr[$i] = $arr[$from];
             $arr[$from] = $tmp;
-
-            //error_log(print_r($arr, true));
         }
     }
     //数组颠倒

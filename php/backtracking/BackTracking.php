@@ -14,8 +14,6 @@ class BackTracking
 
     public function minDistBT($i, $j, $dist, $arr, $n)
     {
-        error_log('i: ' . $i . 'j: ' . $j);
-
         if ($i == $n && $j == $n) {
             if ($dist < $this->minDist) {
                 $this->minDist = $dist;

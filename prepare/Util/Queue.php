@@ -22,7 +22,6 @@ class Queue
     {
         $this->items[] = $item;
         $this->count += 1;
-        error_log(print_r($this->items, true));
     }
 
     function deQueue()
