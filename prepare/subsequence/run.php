@@ -8,7 +8,7 @@
 
 require_once "Solution.php";
 
-$nums = [1, 3, 5, 4, 7, 8, 8, 9, 11];
+$nums = [1, 3, 5, 1, 1, 8, 8, 9, 11];
 $solution = new Solution();
 $res = $solution->findLCIS($nums);
 
