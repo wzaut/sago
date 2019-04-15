@@ -28,10 +28,7 @@ class LinkedList
             $cur_node = $cur_node->next;
 
         }
-        if ($node1 == null)
-            $cur_node->next = $node2;
-        else
-            $cur_node->next = $node1;
+        $cur_node->next = $node1 == null ? $node2 : $node1;
 
         return $head;
     }

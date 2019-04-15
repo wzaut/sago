@@ -27,7 +27,7 @@ $node7->left = $node8;
 
 $class = new Serialization();
 $class->serial($node1);
-echo $class->string;
+echo $class->string . PHP_EOL;
 
 $res = $class->deSerial();
 echo print_r($res, true);
