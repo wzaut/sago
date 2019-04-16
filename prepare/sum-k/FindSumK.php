@@ -30,4 +30,19 @@ class FindSumK
 
     }
 
+    public $res = [];
+    public $tmp = [];
+
+    function findSumK2($arr, $n, $sum)
+    {
+        if ($n >= count($arr))
+            return;
+        $this->tmp[] = $arr[$n];
+        if ($arr[$n] == $sum)
+            $this->res[] = $this->tmp;
+        $this->findSumK2($arr, $n + 1, $sum - $arr[$n]);
+        array_pop($this->tmp);
+        $this->findSumK2($arr, $n + 1, $sum);
+    }
+
 }
