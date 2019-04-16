@@ -28,7 +28,7 @@ class PathSum
         ]
      */
     public $resList = [];
-    private $i = 0;
+
     public function sumPath($node, $sum)
     {
         if ($node == null)
@@ -41,10 +41,8 @@ class PathSum
     private function sumNodeToPath($node, $sum, $stack)
     {
         $stack->push($node->value);
-        if ($node->value == $sum && $node->left == null && $node->right == null) {
-            $this->resList[$this->i] = $stack->items;
-            $this->i++;
-        }
+        if ($node->value == $sum && $node->left == null && $node->right == null)
+            $this->resList[] = $stack->items;
         if ($node->left != null)
             $this->sumNodeToPath($node->left, $sum - $node->value, $stack);
         if ($node->right != null)
