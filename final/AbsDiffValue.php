@@ -1,14 +1,13 @@
 <?php
 
-
+/*
+    * 1、排序数组，返回所有绝对值不同的数的个数？
+       如[-1,1,2]返回2
+       [1,3,3,5]返回3
+       要求：时间On，空间O1
+    */
 class AbsDiffValue
 {
-    /*
-     * 1、排序数组，返回所有绝对值不同的数的个数？
-        如[-1,1,2]返回2
-        [1,3,3,5]返回3
-        要求：时间On，空间O1
-     */
     public function countAbsValues($arr)
     {
         $sum = 0;
@@ -36,3 +35,7 @@ class AbsDiffValue
         return $sum;
     }
 }
+
+$arr = [-3, -2, -2, -1, 0, 2, 3, 3, 15];
+$clazz = new AbsDiffValue();
+echo $clazz->countAbsValues($arr);
