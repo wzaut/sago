@@ -35,7 +35,6 @@ class SendReward
             }
             $i++;
         }
-        error_log(print_r($count_arr, true));
         return $count;
     }
 }
