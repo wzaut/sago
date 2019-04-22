@@ -11,30 +11,22 @@ class Q3
 {
     function lengthOfLongestSubstring($s)
     {
-        $tmp = [];
-        $longest = [];
+        if (strlen($s) == 0)
+            return 0;
+        $hash = [];
+        $j = 0;
+        $max = 0;
         for ($i = 0; $i < strlen($s); ++$i) {
-            if ($i == 0 || !in_array($s[$i], $tmp)) {
-                $tmp[] = $s[$i];
-                if (count($tmp) >= count($longest))
-                    $longest = $tmp;
-            } else {
-                $inx = 0;
-                $tmp = [];
-                foreach ($longest as $key => $value) {
-                    if ($value == $s[$i])
-                        $inx = $key;
-                }
-                for ($j = $inx + 1; $j < count($longest); ++$j) {
-                    $tmp[] = $longest[$j];
-                }
-                $tmp[] = $s[$i];
+            if (isset($hash[$s[$i]])) {
+                $j = max($j, $hash[$s[$i]] + 1);
             }
+            $hash[$s[$i]] = $i;
+            $max = max($max, $i - $j + 1);
         }
-        return count($longest);
+        return $max;
     }
 }
 
-$s = "aabaab!bb";
+$s = "abcabcbb";
 $clazz = new Q3();
 echo $clazz->lengthOfLongestSubstring($s);
