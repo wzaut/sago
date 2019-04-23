@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: weizhexu
- * Date: 2019/4/21
- * Time: 下午9:03
- */
+require_once "ListNode.php";
+
 class Q21
 {
     function mergeTwoLists($l1, $l2)
@@ -30,16 +26,7 @@ class Q21
     }
 }
 
-class ListNode
-{
-    public $val = 0;
-    public $next = null;
 
-    function __construct($val)
-    {
-        $this->val = $val;
-    }
-}
 $node1 = new ListNode(1);
 $node2 = new ListNode(2);
 $node3 = new ListNode(4);
